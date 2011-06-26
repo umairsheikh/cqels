@@ -8,7 +8,7 @@ The C-SPARQL engine can be downloaded at [http://streamreasoning.org/download ht
 
 === Running Experimental Evaluation ===
 
-The source code the [http://code.google.com/p/cqels/wiki/Experiments experiment] with C-SPARQL can be downloaded at [http://cqels.googlecode.com/files/csparql.jar]. To prepare experiment data, download from [http://cqels.googlecode.com/files/csparql-data.zip],then, extract the data into csparql data directory for example, {{{/home/user/csparql/data}}}
+The source code the [http://code.google.com/p/cqels/wiki/Experiments experiment] with C-SPARQL can be downloaded at [http://cqels.googlecode.com/files/csparql.jar]. To prepare experiment data, download from [http://cqels.googlecode.com/files/csparql_data.zip],then, extract the data into csparql data directory for example, {{{/home/user/csparql/data}}}
 
 {{{
 export MINMEM=2048
