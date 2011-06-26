@@ -5,7 +5,7 @@
 
 ===Installation===
 
-The CQELS engine can be downloaded as  [http://cqels.googlecode.com/files/cqels.jar as jar file].
+The CQELS engine can be downloaded as  [http://cqels.googlecode.com/files/cqels.jar as file].
 
 === Running the experiment codes ====
 {{{
@@ -18,8 +18,10 @@ export NoQUERIES=10
 export STREAMSIZE=10000
 export SLEEP=30
 export DATASIZE=100k
+export PRELOADED=true
+export AUTHORNUMBER
 
-java -Xms${MINMEM}m -Xmx${MAXMEM}m -jar cqels.jar $RUNMODE $CQELSDATA $CQELSHOME query1 $DATASIZE $STREAMSIZE true 1
+java -Xms${MINMEM}m -Xmx${MAXMEM}m -jar cqels.jar $RUNMODE $CQELSDATA $CQELSHOME query1 $DATASIZE $STREAMSIZE $PRELOADED $AUTHORNUMBER
 }}}
 
 === Using the CQELS engine ===
