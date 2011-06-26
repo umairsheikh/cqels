@@ -21,7 +21,7 @@ export STREAMSIZE=10000
 export SLEEP=30
 export DATASIZE=100k
 epxort i=3
-export AUTHORNO
+export AUTHORNO=5
 
 java -Xms${MINMEM}m -Xmx${MAXMEM}m -jar csparql.jar $RUNMODE $CSPARQLDATA $CSPARQLHOME query$i $DATASIZE $STREAMSIZE $AUTHORNO
 }}}
