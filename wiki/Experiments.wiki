@@ -36,4 +36,4 @@ the following three types of experiments:
   
 *Multiple queries: For query templates Q1, Q3 and Q4, we register 2^M query instances at the same time, with {{{0<=M<=10}}}, and execute them in parallel. 
 
-In experiments {{{Single query}}} and {{{Multiple queries}}, the numbers of triples from DBLP is fixed to {{{10^5}}}.
+In experiments {{{Single query}}} and {{{Multiple queries}}}, the numbers of triples from DBLP is fixed to {{{10^5}}}.
