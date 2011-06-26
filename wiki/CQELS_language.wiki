@@ -1,35 +1,29 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+= CQELS language =
 
-Add your content here.
+CQELS language is a declarative query language built from  SPARQL 1.1 [[gramma {http://www.w3.org/TR/sparql11-query/#grammar}]] under the EBNF notation. 
 
 
 = Details =
 
-Based on our query semantics, we introduce a declarative query language called CQELS
-language by extending the SPARQL 1.1 grammar6 under the EBNF notation. We add a
-query pattern to present window operators on RDF Stream into the GraphPatternNotTriples
-pattern.
+We add a query pattern to present window operators on RDF Stream into the GraphPatternNotTriples pattern.
 GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern
 |MinusGraphPattern | GraphGraphPattern | StreamGraphPattern
-j ServiceGraphPattern | Filter | Bind
+| ServiceGraphPattern | Filter | Bind
 
 Assuming that each stream has an IRI as identification, the StreamGraphPattern pattern is defined as follows.
 
 StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘f’TriplesTemplate‘g’
-Window ::= Rangle j Triple j ‘NOW’ j ‘ALL’
+Window ::= Rangle | Triple | ‘NOW’ | ‘ALL’
 Range ::= ‘RANGE’ Duration (‘SLIDE’ Duration)?
 Triple ::= ‘TRIPLES’ INTEGER
-Duration ::= (INTEGER ‘d’ j ‘h’ j ‘m’ j ‘s’ j ‘ms’ j ‘ns’)+
+Duration ::= (INTEGER ‘d’ | ‘h’ | ‘m’ | ‘s’ | ‘ms’ | ‘ns’)+
 
 where VarOrIRIRef and TripleTemplate are patterns for the variable/IRI and triple template of SPARQL 1.1, respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
 parameter of time-based window, whose time interval is specified by Duration.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
 
 {{{
 PREFIX lv: <http://deri.org/floorplan/>
