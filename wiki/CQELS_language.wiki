@@ -6,15 +6,15 @@ CQELS language is a declarative query language built from  SPARQL 1.1 [[gramma {
 
 We add a query pattern to present window operators on RDF Stream into the GraphPatternNotTriples pattern.
 
-GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern |MinusGraphPattern | GraphGraphPattern | *StreamGraphPattern*| ServiceGraphPattern | Filter | Bind
+GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern|MinusGraphPattern|GraphGraphPattern| *StreamGraphPattern*|ServiceGraphPattern|Filter|Bind
 
 Assuming that each stream has an IRI as identification, the StreamGraphPattern pattern is defined as follows.
 
 StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘f’TriplesTemplate‘g’
-Window ::= Rangle | Triple | ‘NOW’ | ‘ALL’
+Window ::= Rangle|Triple|‘NOW’|‘ALL’
 Range ::= ‘RANGE’ Duration (‘SLIDE’ Duration)?
 Triple ::= ‘TRIPLES’ INTEGER
-Duration ::= (INTEGER ‘d’ | ‘h’ | ‘m’ | ‘s’ | ‘ms’ | ‘ns’)+
+Duration ::= (INTEGER ‘d’|‘h’|‘m’|‘s’|‘ms’|‘ns’)+
 
 where VarOrIRIRef and TripleTemplate are patterns for the variable/IRI and triple template of SPARQL 1.1, respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
 parameter of time-based window, whose time interval is specified by Duration.
