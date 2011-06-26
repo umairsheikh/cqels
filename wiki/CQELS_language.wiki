@@ -13,7 +13,7 @@ GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern
 Assuming that each stream has an IRI as identification, the StreamGraphPattern pattern is defined as follows.
 
 {{{
-StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘f’TriplesTemplate‘g’
+StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘{’TriplesTemplate‘}’
 Window ::= Rangle|Triple|‘NOW’|‘ALL’
 Range ::= ‘RANGE’ Duration (‘SLIDE’ Duration)?
 Triple ::= ‘TRIPLES’ INTEGER
