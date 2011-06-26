@@ -9,17 +9,10 @@ To enhance the conference experience, each participant would have access to
 the following services, which can all be modeled as continuous
 queries:
  
- * Query 1:  Inform a participant about the name and description of
-   the location he just entered,
- * Query 2: Notify two people when they can reach each other
-   from two different and directly connected (from now on called
-   _nearb_) locations,
- *  Query 3: Notify an author of his co-authors who have been
-   in his current location during the last 5 seconds,
- * Query 4: Notify an author of the editors that  
- edit a paper of him and have been in a nearby location in the last 15
-   seconds,
- * Query 5: Count the number of co-authors appearing in nearby
-   locations in the last 30 seconds, grouped by locations.
+ * Query 1:  Inform a participant about the name and description of the location he just entered,
+ * Query 2: Notify two people when they can reach each other from two different and directly connected (from now on called _nearb_) locations,
+ *  Query 3: Notify an author of his co-authors who have been in his current location during the last 5 seconds,
+ * Query 4: Notify an author of the editors that edit a paper of him and have been in a nearby location in the last 15 seconds,
+ * Query 5: Count the number of co-authors appearing in nearby locations in the last 30 seconds, grouped by locations.
 
 These queries are represented in syntax of  [http://code.google.com/p/cqels/wiki/CQELS_language CQLESlanguage]
