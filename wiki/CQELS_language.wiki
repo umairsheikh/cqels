@@ -7,6 +7,25 @@ Add your content here.
 
 = Details =
 
+Based on our query semantics, we introduce a declarative query language called CQELS
+language by extending the SPARQL 1.1 grammar6 under the EBNF notation. We add a
+query pattern to present window operators on RDF Stream into the GraphPatternNotTriples
+pattern.
+GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern
+|MinusGraphPattern | GraphGraphPattern | StreamGraphPattern
+j ServiceGraphPattern | Filter | Bind
+
+Assuming that each stream has an IRI as identification, the StreamGraphPattern pattern is defined as follows.
+
+StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘f’TriplesTemplate‘g’
+Window ::= Rangle j Triple j ‘NOW’ j ‘ALL’
+Range ::= ‘RANGE’ Duration (‘SLIDE’ Duration)?
+Triple ::= ‘TRIPLES’ INTEGER
+Duration ::= (INTEGER ‘d’ j ‘h’ j ‘m’ j ‘s’ j ‘ms’ j ‘ns’)+
+
+where VarOrIRIRef and TripleTemplate are patterns for the variable/IRI and triple template of SPARQL 1.1, respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
+parameter of time-based window, whose time interval is specified by Duration.
+
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
