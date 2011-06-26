@@ -51,3 +51,10 @@ http://cqels.googlecode.com/files/query3-datasize.png
 http://cqels.googlecode.com/files/query4-datasize.png
 
 http://cqels.googlecode.com/files/query5-datasize.png
+
+Results of "Multiple queries" experiments
+http://cqels.googlecode.com/files/query1-multiple.png
+
+http://cqels.googlecode.com/files/query3-multiple.png
+
+http://cqels.googlecode.com/files/query4-multiple.png
