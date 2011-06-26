@@ -20,11 +20,12 @@ Triple ::= ‘TRIPLES’ INTEGER
 Duration ::= (INTEGER ‘d’|‘h’|‘m’|‘s’|‘ms’|‘ns’)+
 }}}
 
-where _VarOrIRIRef_ and _TripleTemplate_ are patterns for the variable/IRI and triple template of [http://www.w3.org/TR/sparql11-query/ SPARQL 1.1], respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
+where {{{VarOrIRIRef}}} and {{{TripleTemplate}}} are patterns for the variable/IRI and triple template of [http://www.w3.org/TR/sparql11-query/ SPARQL 1.1], respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
 parameter of time-based window, whose time interval is specified by Duration.
 
-[NOW] window is used to indicate that only the triples at the current timestamp are kept 
-[ALL] window is used to indicate that all the triples will be kept in the window
+[NOW] window is used to indicate that only the triples at the current timestamp are kept.
+ 
+[ALL] window is used to indicate that all the triples will be kept in the window.
 
 Query 1
 {{{
