@@ -11,3 +11,18 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+{{{
+PREFIX lv: <http://deri.org/floorplan/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+SELECT ?locName  
+FROM NAMED <http://deri.org/floorplan/>
+WHERE {
+STREAM <http://deri.org/streams/rfid> [NOW] 
+{?person lv:detectedAt ?loc} 
+{?person foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string> }
+GRAPH <http://deri.org/floorplan/> 
+{?loc lv:name ?locName}
+}
+}}}
