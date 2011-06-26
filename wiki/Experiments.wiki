@@ -21,4 +21,4 @@ queries:
  * Query 5: Count the number of co-authors appearing in nearby
    locations in the last 30 seconds, grouped by locations.
 
-These queries are represented in CQELS language at [CQLES_language]
+These queries are represented in syntax of  [http://code.google.com/p/cqels/wiki/CQELS_language CQLESlanguage]
