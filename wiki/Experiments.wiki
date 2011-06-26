@@ -35,4 +35,12 @@ We have performed the following three types of experiments:
 
 In experiments {{{Single query}}} and {{{Multiple queries}}}, the numbers of triples from DBLP is fixed to 10^5^.
 
+
+Results of "Varying size of the DBLP dataset" experiments
 http://cqels.googlecode.com/files/query1-datasize.png
+
+http://cqels.googlecode.com/files/query3-datasize.png
+
+http://cqels.googlecode.com/files/query4-datasize.png
+
+http://cqels.googlecode.com/files/query5-datasize.png
