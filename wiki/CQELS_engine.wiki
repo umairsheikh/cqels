@@ -14,14 +14,13 @@ export MAXMEM=4096
 export RUNMODE=single
 export CQELSDATA=/home/user/cqels/data
 export CQELSHOME=/home/user/cqels
-export NoQUERIES=10
 export STREAMSIZE=10000
 export SLEEP=30
 export DATASIZE=100k
 export PRELOADED=true
-export AUTHORNUMBER=1
+export AUTHORNO=1
 
-java -Xms${MINMEM}m -Xmx${MAXMEM}m -jar cqels.jar $RUNMODE $CQELSDATA $CQELSHOME query1 $DATASIZE $STREAMSIZE $PRELOADED $AUTHORNUMBER
+java -Xms${MINMEM}m -Xmx${MAXMEM}m -jar cqels.jar $RUNMODE $CQELSDATA $CQELSHOME query1 $DATASIZE $STREAMSIZE $PRELOADED $AUTHORNO
 }}}
 
 === Using the CQELS engine ===
