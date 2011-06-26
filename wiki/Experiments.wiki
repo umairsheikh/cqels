@@ -2,7 +2,7 @@
 
 = Conference scenario =
 
-This scenario is based on the [Live Social Semantics http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=5470665]
+This scenario is based on the [http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=5470665 Live Social Semantics]
 experiment.  The authors of research papers are recorded the position by RFID tags. These authors have their publication information stored in a DBLP dataset.
 To enhance the conference experience, each participant would have access to
 the following services, which can all be modelled as continuous
