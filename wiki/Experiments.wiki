@@ -21,6 +21,6 @@ Guidelines for how to run experiment queries on CQELS,C-SPARQL and ETALIS can be
 
 * CQELS [http://code.google.com/p/cqels/wiki/CQELS_engine]
 
-* CSPARQL [http://code.google.com/p/cqels/wiki/CSPARQL_engine]
+* CSPARQL [http://code.google.com/p/cqels/wiki/CSPARQL_Engine]
 
 * ETALIS [http://code.google.com/p/cqels/wiki/ETALIS]
