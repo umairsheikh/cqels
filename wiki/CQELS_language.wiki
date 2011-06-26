@@ -20,11 +20,13 @@ Triple ::= ‘TRIPLES’ INTEGER
 Duration ::= (INTEGER ‘d’|‘h’|‘m’|‘s’|‘ms’|‘ns’)+
 }}}
 
-where VarOrIRIRef and TripleTemplate are patterns for the variable/IRI and triple template of SPARQL 1.1, respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
+where _VarOrIRIRef_ and _TripleTemplate_ are patterns for the variable/IRI and triple template of [http://www.w3.org/TR/sparql11-query/ SPARQL 1.1], respectively. Range corresponds to a time-based window while Triple corresponds to a triple-based window. The keyword SLIDE is used for specifying the sliding
 parameter of time-based window, whose time interval is specified by Duration.
 
+[NOW] window is used to indicate that only the triples at the current timestamp are kept 
+[ALL] window is used to indicate that all the triples will be kept in the window
 
-
+Query 1
 {{{
 PREFIX lv: <http://deri.org/floorplan/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/> 
@@ -40,6 +42,7 @@ GRAPH <http://deri.org/floorplan/>
 }
 }}}
 
+Query 2
 {{{
 PREFIX lv: <http://deri.org/floorplan/>
 SELECT  ?person1 ?person2 
@@ -53,6 +56,7 @@ STREAM <http://deri.org/streams/rfid> [RANGE 3s] {?person2 lv:detectedAt ?loc2}
 }
 }}}
 
+Query 3
 {{{
 PREFIX lv: <http://deri.org/floorplan/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/> 
@@ -71,6 +75,7 @@ FILTER(?auth!=?coAuth)
 }
 }}}
 
+Query 4
 {{{
 PREFIX lv: <http://deri.org/floorplan/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/> 
@@ -87,6 +92,7 @@ GRAPH <http://deri.org/floorplan/> {?loc1 lv:connected ?loc2}
 }
 }}}
 
+Query 5
 {{{
 PREFIX lv: <http://deri.org/floorplan/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/> 
