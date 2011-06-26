@@ -2,7 +2,7 @@
 
 = CQELS language =
 
-CQELS language is a declarative query language built from  SPARQL 1.1 [gramma http://www.w3.org/TR/sparql11-query/#grammar] under the EBNF notation. 
+CQELS language is a declarative query language built from  SPARQL 1.1 [http://www.w3.org/TR/sparql11-query/#grammar grammar] under the EBNF notation. 
 
 We add a query pattern to present window operators on RDF Stream into the {{{GraphPatternNotTriples}}} pattern.
 
