@@ -1,0 +1,25 @@
+#summary One-sentence summary of this page.
+
+== CQELS engine ==
+
+
+===Installation===
+
+The CQELS engine can be downloaded as  [http://cqels.googlecode.com/files/cqels.jar as jar file].
+
+=== Running the experiment codes ====
+
+export MINMEM=2048
+export MAXMEM=4096
+export RUNMODE=single
+export CQELSDATA=/home/user/cqels/data
+export CQELSHOME=/home/user/cqels
+export NoQUERIES=10
+export STREAMSIZE=10000
+export SLEEP=30
+export DATASIZE=100k
+
+java -Xms${MINMEM}m -Xmx${MAXMEM}m -jar cqels.jar $RUNMODE $CQELSDATA $CQELSHOME query1 $DATASIZE $STREAMSIZE true 1
+
+
+=== Using the CQELS engine ===
