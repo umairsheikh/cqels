@@ -20,5 +20,7 @@ These queries are represented in the syntax of CQELS language at [http://code.go
 Guidelines for how to run experiment queries on CQELS,C-SPARQL and ETALIS can be founded at :
 
 * CQELS [http://code.google.com/p/cqels/wiki/CQELS_Engine]
-* SPARQL [http://code.google.com/p/cqels/wiki/CSPARQL_Engine]
+
+* CSPARQL [http://code.google.com/p/cqels/wiki/CSPARQL_Engine]
+
 * ETALIS [http://code.google.com/p/cqels/wiki/ETALIS]
