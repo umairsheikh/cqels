@@ -15,4 +15,4 @@ queries:
  * Query 4: Notify an author of the editors that edit a paper of him and have been in a nearby location in the last 15 seconds,
  * Query 5: Count the number of co-authors appearing in nearby locations in the last 30 seconds, grouped by locations.
 
-These queries are represented in syntax of  [http://code.google.com/p/cqels/wiki/CQELS_language CQLES language]
+These queries are represented in the syntax of  [http://code.google.com/p/cqels/wiki/CQELS_language CQLES language]
