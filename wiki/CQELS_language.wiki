@@ -52,7 +52,8 @@ GRAPH <http://deri.org/floorplan/>
 STREAM <http://deri.org/streams/rfid> [TRIPLES 1] 
 {?auth lv:detectedAt ?loc} 
 STREAM <http://deri.org/streams/rfid> [RANGE 5s] {?coAuth lv:detectedAt ?loc}
-{?paper dc:creator ?auth. ?paper dc:creator ?coAuth. ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string> }
+{?paper dc:creator ?auth. ?paper dc:creator ?coAuth.
+ ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string> }
 FILTER(?auth!=?coAuth)
 }
 }}}
@@ -68,7 +69,8 @@ STREAM <http://deri.org/streams/rfid> [TRIPLES 1] {?auth lv:detectedAt ?loc1}
 STREAM <http://deri.org/streams/rfid> [RANGE 15s] {?editor lv:detectedAt ?loc2}
 GRAPH <http://deri.org/floorplan/> {?loc1 lv:connected ?loc2} 
 ?paper dc:creator ?auth. ?paper dcterms:partOf ?proceeding.
-?proceeding swrc:editor ?editor. ?editor foaf:name ?editorName. ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string>
+?proceeding swrc:editor ?editor. ?editor foaf:name ?editorName.
+ ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string>
 }
 }}}
 
@@ -84,7 +86,8 @@ GRAPH <http://deri.org/floorplan/>
 STREAM <http://deri.org/streams/rfid> [TRIPLES 1] 
 {?auth lv:detectedAt ?loc1} 
 STREAM <http://deri.org/streams/rfid> [RANGE 30s] {?coAuth lv:detectedAt ?loc2}
-{?paper dc:creator ?auth. ?paper dc:creator ?coAuth. ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string> }
+{?paper dc:creator ?auth. ?paper dc:creator ?coAuth.
+ ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string> }
 FILTER(?auth!=?coAuth)
 }
 GROUP BY ?loc2 ?locName
