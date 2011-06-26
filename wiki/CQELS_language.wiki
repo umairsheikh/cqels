@@ -4,13 +4,9 @@
 
 CQELS language is a declarative query language built from  SPARQL 1.1 [[gramma {http://www.w3.org/TR/sparql11-query/#grammar}]] under the EBNF notation. 
 
-
-= Details =
-
 We add a query pattern to present window operators on RDF Stream into the GraphPatternNotTriples pattern.
-GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern
-|MinusGraphPattern | GraphGraphPattern | StreamGraphPattern
-| ServiceGraphPattern | Filter | Bind
+
+GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern |MinusGraphPattern | GraphGraphPattern | *StreamGraphPattern*| ServiceGraphPattern | Filter | Bind
 
 Assuming that each stream has an IRI as identification, the StreamGraphPattern pattern is defined as follows.
 
