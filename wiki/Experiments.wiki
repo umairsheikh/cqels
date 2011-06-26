@@ -27,10 +27,10 @@ Guidelines for how to run experiment queries on CQELS,C-SPARQL and ETALIS can be
 We have performed the 
 the following three types of experiments:
 
-* Single query : For each of the Q1, Q3, Q4 and Q5 templates we generate 10 different query instances. For query template Q2, since it has no constants, we create one instance only. Then we run each instance at a time and compute the average query execution time.
+# Single query : For each of the Q1, Q3, Q4 and Q5 templates we generate 10 different query instances. For query template Q2, since it has no constants, we create one instance only. Then we run each instance at a time and compute the average query execution time.
 
-* Varying size of the DBLP dataset : We do the same experiment as in~\eqref{exp-single} but varying the numbers of triples of the DBLP dataset, ranging from 10^4 to 10^7 triples. We do not include Q2 in this experiment, since it does not involved DBLP dataset.
+# Varying size of the DBLP dataset : We do the same experiment as in~\eqref{exp-single} but varying the numbers of triples of the DBLP dataset, ranging from 10^4 to 10^7 triples. We do not include Q2 in this experiment, since it does not involved DBLP dataset.
   
-*Multiple queries: For query templates Q1, Q3 and Q4, we register 2^M query instances at the same time, with {{{0<=M<=10}}}, and execute them in parallel. 
+# Multiple queries: For query templates Q1, Q3 and Q4, we register 2^M query instances at the same time, with {{{0<=M<=10}}}, and execute them in parallel. 
 
 In experiments {{{Single query}}} and {{{Multiple queries}}}, the numbers of triples from DBLP is fixed to {{{10^5}}}.
