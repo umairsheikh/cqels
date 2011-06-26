@@ -10,7 +10,7 @@ We add a query pattern to present window operators on RDF Stream into the {{{Gra
 GraphPatternNotTriples ::= GroupOrUnionGraphPattern| OptionalGraphPattern
 |MinusGraphPattern|GraphGraphPattern| *StreamGraphPattern*|ServiceGraphPattern|Filter|Bind
 }}}
-Assuming that each stream has an IRI as identification, the StreamGraphPattern pattern is defined as follows.
+Assuming that each stream has an IRI as identification, the {{{StreamGraphPattern}}} pattern is defined as follows.
 
 {{{
 StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘{’TriplesTemplate‘}’
