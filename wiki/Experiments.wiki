@@ -8,11 +8,11 @@ experiment.  Location of authors are recorded by RFID tags. These authors have t
 To enhance the conference experience, each participant would have access to the following services, which can all be modeled as continuous
 queries:
  
- * Query 1:  Inform a participant about the name and description of the location he just entered,
- * Query 2: Notify two people when they can reach each other from two different and directly connected (from now on called _nearby_) locations,
- *  Query 3: Notify an author of his co-authors who have been in his current location during the last 5 seconds,
- * Query 4: Notify an author of the editors that edit a paper of him and have been in a nearby location in the last 15 seconds,
- * Query 5: Count the number of co-authors appearing in nearby locations in the last 30 seconds, grouped by locations.
+ * Query 1(Q1):  Inform a participant about the name and description of the location he just entered,
+ * Query 2(Q2): Notify two people when they can reach each other from two different and directly connected (from now on called _nearby_) locations,
+ *  Query 3(Q3): Notify an author of his co-authors who have been in his current location during the last 5 seconds,
+ * Query 4(Q4): Notify an author of the editors that edit a paper of him and have been in a nearby location in the last 15 seconds,
+ * Query 5(Q5): Count the number of co-authors appearing in nearby locations in the last 30 seconds, grouped by locations.
 
 These queries are represented in the syntax of CQELS language at [http://code.google.com/p/cqels/wiki/CQELS_language].
 
@@ -31,7 +31,7 @@ We have performed the following three types of experiments:
  * Varying size of the DBLP dataset : We do the same experiment as in "Single Query" but varying the numbers of triples of the DBLP dataset, ranging from 10^4^ to 10^7^ triples. We do not include Q2 in this experiment, since it does not involved DBLP dataset.
 
   
- * Multiple queries: For query templates Query 1, Query 3 and Query 4, we register 2^M query instances at the same time, with {{{0<=M<=10}}}, and execute them in parallel. 
+ * Multiple queries: For query templates Q1, Q3 and Q4, we register 2^M^ query instances at the same time, with {{{0<=M<=10}}}, and execute them in parallel. 
 
 In experiments {{{Single query}}} and {{{Multiple queries}}}, the numbers of triples from DBLP is fixed to 10^5^.
 
