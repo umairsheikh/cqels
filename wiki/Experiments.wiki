@@ -35,7 +35,7 @@ We have performed the following three types of experiments:
 
 In experiments {{{Single query}}} and {{{Multiple queries}}}, the numbers of triples from DBLP is fixed to 10^5^.
 
-Results of "Single query" experiments :
+===Results of "Single query" experiments :===
 
 ||     || Query 1 || Query 2 || Query 3 || Query 4 || Query 5||
 ||CQELS|| 0.47    || 3.90    || 0.51	|| 0.53    ||  21.83 ||
@@ -43,7 +43,7 @@ Results of "Single query" experiments :
 ||ETALIS||  0.06  || 27.47   ||79.95	||469.23   ||160.83  ||
   
 
-Results of "Varying size of the DBLP dataset" experiments
+===Results of "Varying size of the DBLP dataset" experiments===
 
 http://cqels.googlecode.com/files/query1-datasize.png
 
@@ -53,7 +53,7 @@ http://cqels.googlecode.com/files/query4-datasize.png
 
 http://cqels.googlecode.com/files/query5-datasize.png
 
-Results of "Multiple queries" experiments
+===Results of "Multiple queries" experiments===
 
 http://cqels.googlecode.com/files/query1-multiple.png
 
