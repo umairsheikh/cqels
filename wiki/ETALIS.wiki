@@ -5,3 +5,7 @@
 The ETALIS engine can be downloaded at [http://code.google.com/p/etalis/]
 
 === Running Experimental Evaluation ===
+
+Download experimental data at [http://cqels.googlecode.com/files/etalis_data.zip]. Extract the experiment data, then put it in the data directory of ETALIS engine, for example, {{{/home/user/etalis/data}}}.
+
+Download queries files at [http://cqels.googlecode.com/files/etalis_queries.zip]. Extract the queries, then put them in the query directory of ETALIS engine, for example, {{{/home/user/etalis/queries}}}.
