@@ -42,7 +42,7 @@ In experiments {{{Single query}}} and {{{Multiple queries}}}, the numbers of tri
 ||C-SPARQL||332.46||	99.84||331.68	||395.18   || 322.64 ||
 ||ETALIS||  0.06  || 27.47   ||79.95	||469.23   ||160.83  ||
 
-'*' The query execution time is in miliseconds.
+(*) The query execution time is in miliseconds.
   
 
 ===Results of "Varying size of the DBLP dataset" experiments===
