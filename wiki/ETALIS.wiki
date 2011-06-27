@@ -1,3 +1,7 @@
 #summary One-sentence summary of this page.
 
-How to run experiments on ETALIS here
+=== Installation ===
+
+The ETALIS engine can be downloaded at [http://code.google.com/p/etalis/]
+
+=== Running Experimental Evaluation ===
