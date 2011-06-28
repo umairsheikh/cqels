@@ -8,7 +8,7 @@
 The CQELS engine can be downloaded as  [http://cqels.googlecode.com/files/cqels.jar jar file].
 
 === Running the experiment codes ====
-The experiment data can be downloaded at [http://cqels.googlecode.com/files/cqels_data.zip]. Extract the experiment data, then put in the data directory of CQELS engine, for example ,{{{/home/user/cqels/data}}} 
+The experiment data can be downloaded at [http://cqels.googlecode.com/files/cqels_data.zip]. Due to the limit of uploading file,  the DBLP dataset at 10 million triples can be downloaded in separate file [http://cqels.googlecode.com/files/10M.rdf.bz2]. Extract the experiment data, then put in the data directory of CQELS engine, for example ,{{{/home/user/cqels/data}}} 
 {{{
 export MINMEM=2048
 export MAXMEM=4096
