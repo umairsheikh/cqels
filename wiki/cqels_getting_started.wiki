@@ -73,8 +73,13 @@ context=new ExecContext(HOME, false);
 
 stream= new TextStream(context, "http://deri.org/streams/rfid", HOME+"/rfid_50000.stream");
 
+String queryString =" ... ";
 
-selQuery=context.registerSelect(textArea.getText());
-			selQuery.register(new ReportResult(result));
+selQuery=context.registerSelect(queryString);
+selQuery.register(new ContinuousListener()
+{
+      public void update(Mapping mapping){
+      } 
+});
 
 }}}
