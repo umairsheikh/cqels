@@ -2,7 +2,7 @@
 
 = Getting Started =
 
-Following _TextStream_ class illustrates how to implement a class for streamming RDF data by extends RDFStream class, the RDFStream class provide "stream" method to stream RDF triples to the CQELS engine
+Following _`TextStream`_ class illustrates how to implement a class for streamming RDF data by extends RDFStream class, the RDFStream class provide "stream" method to stream RDF triples to the CQELS engine
 
 {{{
 
