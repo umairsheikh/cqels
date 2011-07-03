@@ -65,3 +65,16 @@ public class TextStream extends RDFStream implements Runnable{
 }
 
 }}}
+
+
+{{{
+
+context=new ExecContext(HOME, false);
+
+stream= new TextStream(context, "http://deri.org/streams/rfid", HOME+"/rfid_50000.stream");
+
+
+selQuery=context.registerSelect(textArea.getText());
+			selQuery.register(new ReportResult(result));
+
+}}}
