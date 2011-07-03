@@ -66,22 +66,35 @@ public class TextStream extends RDFStream implements Runnable{
 
 }}}
 
+Initialize the CQELS engine
 
 {{{
 
-context=new ExecContext(HOME, false);
+ExecContext context=new ExecContext(HOME, false);
+}}}
 
-stream= new TextStream(context, "http://deri.org/streams/rfid", HOME+"/rfid_50000.stream");
+Initialize the RDF stream 
+
+{{{
+RDFStream= new TextStream(context, "http://deri.org/streams/rfid", HOME+"/rfid_50000.stream");
+}}}
+
+Register the query to CQELS engine
+{{{
 
 String queryString =" ... ";
 
-selQuery=context.registerSelect(queryString);
+ContinuousSelect selQuery=context.registerSelect(queryString);
 selQuery.register(new ContinuousListener()
 {
       public void update(Mapping mapping){
       } 
 });
 
+}}}
+
+Start streaming thread
+{{{
 (new Thread(stream)).start();
 
 }}}
