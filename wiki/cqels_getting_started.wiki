@@ -82,4 +82,6 @@ selQuery.register(new ContinuousListener()
       } 
 });
 
+(new Thread(stream)).start();
+
 }}}
