@@ -119,15 +119,9 @@ Multiple Stream joins (for ISWC 2011 paper)
 CONSTRUCT  {?s12 ?p2 o2. ?s13 ?p3 ?o3.} 
 FROM NAMED <http://deri.org/floorplan/>
 WHERE {
-STREAM <http://deri.org/streams/L1> [RANGE 3s SLIDE 1s] 
-{?s12 ?p1 ?o1}
-STREAM <http://deri.org/streams/L2> [RANGE 3s TUMBLING] 
-{?s12 ?p2 ?o2}
-STREAM <http://deri.org/streams/L1> [RANGE 3s TUMLING] 
-{?s13 ?p1 ?o1}
-STREAM <http://deri.org/streams/L3> [RANGE 3s TUMLING] 
-{?s13 ?p3 ?o3}
-}
-GROUP BY ?loc2 ?locName
-}}}
+STREAM <http://deri.org/streams/L1> [RANGE 3s SLIDE 1s] {?s12 ?p1 ?o1}
+STREAM <http://deri.org/streams/L2> [RANGE 3s TUMBLING] {?s12 ?p2 ?o2}
+STREAM <http://deri.org/streams/L1> [RANGE 3s TUMLING] {?s13 ?p1 ?o1}
+STREAM <http://deri.org/streams/L3> [RANGE 3s TUMLING] {?s13 ?p3 ?o3}
+}}}}
   
