@@ -15,7 +15,7 @@ Assuming that each stream has an IRI as identification, the {{{StreamGraphPatter
 {{{
 StreamGraphPattern ::= ‘STREAM’ ‘[’ Window ‘]’ VarOrIRIref ‘{’TriplesTemplate‘}’
 Window ::= Rangle|Triple|‘NOW’|‘ALL’
-Range ::= ‘RANGE’ Duration (‘SLIDE’ Duration)?
+Range ::= ‘RANGE’ Duration (‘SLIDE’ Duration |'TUMBLING')?
 Triple ::= ‘TRIPLES’ INTEGER
 Duration ::= (INTEGER ‘d’|‘h’|‘m’|‘s’|‘ms’|‘ns’)+
 }}}
@@ -109,6 +109,24 @@ STREAM <http://deri.org/streams/rfid> [RANGE 30s] {?coAuth lv:detectedAt ?loc2}
 {?paper dc:creator ?auth. ?paper dc:creator ?coAuth.
  ?auth foaf:name "AUTHORNAME"^^<http://www.w3.org/2001/XMLSchema#string> }
 FILTER(?auth!=?coAuth)
+}
+GROUP BY ?loc2 ?locName
+}}}
+
+Multiple Stream joins (for ISWC 2011 paper)
+{{{
+
+CONSTRUCT  {?s12 ?p2 o2. ?s13 ?p3 ?o3.} 
+FROM NAMED <http://deri.org/floorplan/>
+WHERE {
+STREAM <http://deri.org/streams/L1> [RANGE 3s SLIDE 1s] 
+{?s12 ?p1 ?o1}
+STREAM <http://deri.org/streams/L2> [RANGE 3s TUMBLING] 
+{?s12 ?p2 ?o2}
+STREAM <http://deri.org/streams/L1> [RANGE 3s TUMLING] 
+{?s13 ?p1 ?o1}
+STREAM <http://deri.org/streams/L3> [RANGE 3s TUMLING] 
+{?s13 ?p3 ?o3}
 }
 GROUP BY ?loc2 ?locName
 }}}
