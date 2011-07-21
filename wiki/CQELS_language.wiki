@@ -122,6 +122,6 @@ WHERE {
 STREAM <http://deri.org/streams/L1> [RANGE 3s SLIDE 1s] {?s12 ?p1 ?o1}
 STREAM <http://deri.org/streams/L2> [RANGE 3s TUMBLING] {?s12 ?p2 ?o2}
 STREAM <http://deri.org/streams/L1> [RANGE 3s TUMLING] {?s13 ?p1 ?o1}
-STREAM <http://deri.org/streams/L3> [RANGE 3s TUMLING] {?s13 ?p3 ?o3}
+STREAM <http://deri.org/streams/L3> [TRIPLE 5] {?s13 ?p3 ?o3}
 }}}}
   
