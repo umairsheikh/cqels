@@ -75,6 +75,17 @@ Initialize the CQELS engine
 ExecContext context=new ExecContext(HOME, false);
 }}}
 
+{{{
+
+//load the default dataset from the a directory
+
+context.loadDefaultDataset("{DIRECTORY TO LOAD DEFAULT DATASET}");
+
+//load datasets for named graph
+
+ context.loadDataset("{URI OF NAMED GRAPH}", "{DIRECTORY TO LOAD NAMED GRAPH}");
+}}}
+
 Initialize the RDF stream 
 
 {{{
