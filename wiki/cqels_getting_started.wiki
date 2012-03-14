@@ -75,6 +75,8 @@ Initialize the CQELS engine
 ExecContext context=new ExecContext(HOME, false);
 }}}
 
+The static datasets will be loaded directly from the URIs of the named graphs, they can also can be load by following codes : 
+
 {{{
 
 //load the default dataset from the a directory
