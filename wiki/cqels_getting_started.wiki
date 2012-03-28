@@ -39,7 +39,7 @@ public class TextStream extends RDFStream implements Runnable{
 			String strLine;
 			while ((strLine = reader.readLine()) != null &&(!stop))   {
 			    String[] data=strLine.split(" ");
-				stream(n(data[0]),n(data[1]),n(data[2]));
+				stream(n(data[0]),n(data[1]),n(data[2])); // For streaming RDF triples
 				
 				if(sleep>0){
 					try {
