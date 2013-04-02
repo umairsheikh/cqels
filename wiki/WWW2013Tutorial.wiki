@@ -8,11 +8,11 @@ This tutorial gives an overview about Linked Stream Data processing. It describe
 
 = Agenda =
 
-Part I: Basic Concepts & Modeling (1.5h presentation)
-1.   Linked Stream Data
-2.   Data models
-3.   Query Languages and Operators
-4.   Choices and challenges in designing a Linked Stream Data processor
+*Part I: Basic Concepts & Modeling (1.5h presentation)
+ #   Linked Stream Data
+ #   Data models
+ #  Query Languages and Operators
+ #  Choices and challenges in designing a Linked Stream Data processor
  
 Part II: Building a Linked Stream Processing Engine (1.5h presentation)
 1.   Analysis of available Linked Stream Processing Engines
