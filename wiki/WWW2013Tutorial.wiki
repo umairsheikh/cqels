@@ -14,11 +14,11 @@ This tutorial gives an overview about Linked Stream Data processing. It describe
  #  Query Languages and Operators
  #  Choices and challenges in designing a Linked Stream Data processor
  
-Part II: Building a Linked Stream Processing Engine (1.5h presentation)
-1.   Analysis of available Linked Stream Processing Engines
-2.   Design choices, implementation
-3.   Performance comparison
-4.   Open challenges
+*Part II: Building a Linked Stream Processing Engine (1.5h presentation)
+ #   Analysis of available Linked Stream Processing Engines
+ #   Design choices, implementation
+ #   Performance comparison
+ #   Open challenges
 
 =Presenters=
 
