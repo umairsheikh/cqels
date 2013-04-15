@@ -8,7 +8,7 @@ This tutorial gives an overview about Linked Stream Data processing. It describe
 
 = Agenda =
 
-*Part I: Basic Concepts & Modeling (1.5h presentation)*
+*Part I: Basic Concepts & Modeling (1.5h presentation, [Slides https://cqels.googlecode.com/files/Linked%20Stream%20Data%20Processing%20Part2.pdf])
  #   Linked Stream Data
  #   Data models
  #  Query Languages and Operators
