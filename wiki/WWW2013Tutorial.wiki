@@ -1,4 +1,4 @@
-=Linked Stream Data Processing Tutorial=
+=*Linked Stream Data Processing Tutorial*=
 
 = Introduction =
 
