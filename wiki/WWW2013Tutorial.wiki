@@ -8,13 +8,13 @@ This tutorial gives an overview about Linked Stream Data processing. It describe
 
 = Agenda =
 
-*Part I: Basic Concepts & Modeling (1.5h presentation, [https://cqels.googlecode.com/files/Linked%20Stream%20Data%20Processing%20Part2.pdf Slides])
+*Part I: Basic Concepts & Modeling (1.5h presentation, [https://cqels.googlecode.com/files/Linked%20Stream%20Data%20Processing%20Part1.pdf Slides])
  #   Linked Stream Data
  #   Data models
  #  Query Languages and Operators
  #  Choices and challenges in designing a Linked Stream Data processor
  
-*Part II: Building a Linked Stream Processing Engine (1.5h presentation)*
+*Part II: Building a Linked Stream Processing Engine (1.5h presentation,[https://cqels.googlecode.com/files/Linked%20Stream%20Data%20Processing%20Part2.pdf Slides])*
  #   Analysis of available Linked Stream Processing Engines
  #   Design choices, implementation
  #   Performance comparison
