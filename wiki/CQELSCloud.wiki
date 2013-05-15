@@ -8,7 +8,7 @@ In this tutorial we will describe the required steps for setting up a distribute
 
 =Tutorial approach and structure =
 
-We implemented our elastic execution model and the parallel algorithms using ZooKeeper, Storm and HBase. The architecture of CQELS Cloud is is shown in Figure 1: The Execution Coordinator coordinates the cluster of OCs using coordination services provided by Storm and HBase which share the same Zookeeper cluster. The Global Scheduler uses Nimbus3, an open source EC2/S3- compatible Infrastructure-as-a-Service implementation, to deploy the operators’ code to OCs and monitor for failures. Each OC node runs a Storm supervisor which listens for continuous processing tasks assigned to its machine via Nimbus. The processing tasks that need to process the persistent data use the HBase Client component to access data stored in HBase. The machines running an OC also hosts the HDFS DataNodes of the HBase cluster. The DataNodes are accessed via the OC’s HRegionServer component of HBase.
+We implemented our elastic execution model and the parallel algorithms using ZooKeeper,  Storm and HBase. The architecture of CQELS Cloud is is shown in Figure 1: The Execution Coordinator coordinates the cluster of OCs using coordination services provided by Storm and HBase which share the same Zookeeper cluster. The Global Scheduler uses Nimbus3, an open source EC2/S3- compatible Infrastructure-as-a-Service implementation, to deploy the operators’ code to OCs and monitor for failures. Each OC node runs a Storm supervisor which listens for continuous processing tasks assigned to its machine via Nimbus. The processing tasks that need to process the persistent data use the HBase Client component to access data stored in HBase. The machines running an OC also hosts the HDFS DataNodes of the HBase cluster. The DataNodes are accessed via the OC’s HRegionServer component of HBase.
 
 [http://cqels.googlecode.com/files/CQELSCloud.png]
 
@@ -21,10 +21,45 @@ We implemented our elastic execution model and the parallel algorithms using Zoo
  * Storm 0.8.2
 
 ===Step 1: Get the Cluster Running===
-I’m going to assume you already have an Amazon Web Services account (because it’s awesome, and the basic tier is free.) If you don’t, go get one. Amazon’s directions for getting started are pretty clear, or you can easily find a guide with Google. We won’t actually be interacting with the Amazon management console much, but you will need two pieces of information, your AWS Access Key ID and your AWS Secret Access Key.
 
-To find these, go to [https://portal.aws.amazon.com/gp/aws/securityCredentials Amazon Credentials]. You can write these down, or better yet add them to your shell startup script by doing:
+You will need to sign up, or create an Amazon Web Service (AWS) account at http://aws.amazon.com/.
 
+We will use EC2 command-line tools to manage our instances. You can download and set up the tools by following the instructions available at the following page:
+
+[http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/index.html?SettingUp_CommandLine.html].
+
+You need a public/private key to log in to your EC2 instances. You can generate your key pairs and upload your public key to EC2, using these instructions:
+
+http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/generating-a-keypair.html.
+
+Before you can log in to an instance, you must authorize access. The following link contains instructions for adding rules to the default security group:
+
+http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/adding-security-group-rules.html.
+
+After all these steps are done, review the following checklist to make sure everything is ready:
+
+X.509 certificates: Check if the X.509 certificates are uploaded. You can check this at your account's Security Credentials page.
+EC2 key pairs: Check if EC2 key pairs are uploaded. You can check this at AWS Management Console | Amazon EC2 | NETWORK & SECURITY | Key Pairs.
+Access: Check if the access has been authorized. This can be checked at AWS Management Console | Amazon EC2 | NETWORK & SECURITY | Security Groups | Inbound.
+Environment variable settings: Check if the environment variable settings are done. As an example, the following snippet shows my settings; make sure you are using the right EC2_URL for your region:
+{{{
+$ cat ~/.bashrc
+export EC2_HOME=~/opt/ec2-api-tools-1.4.4.2
+export PATH=$PATH:$EC2_HOME/bin
+export EC2_PRIVATE_KEY=~/.ec2/pk-OWRHNWUG7UXIOPJXLOBC5UZTQBOBCVQY.pem
+export EC2_CERT=~/.ec2/cert-OWRHNWUG7UXIOPJXLOBC5UZTQBOBCVQY.pem
+export JAVA_HOME=/Library/Java/Home
+export EC2_URL=https://ec2.us-west-1.amazonaws.com
+}}}
+We need to import our EC2 key pairs to manage EC2 instances via EC2 command-line tools:
+{{{
+$ ec2-import-keypair your-key-pair-name --public-key-file ~/.ssh/id_rsa.pub
+}}}
+Verify the settings by typing the following command:
+{{{
+$ ec2-describe-instances
+}}}
+If everything has been set up properly, the command will show your instances similarly to how you had configured them in the previous command.
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
