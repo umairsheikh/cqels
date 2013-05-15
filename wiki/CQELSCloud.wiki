@@ -147,20 +147,20 @@ Nathan Marz, the author of Twitter Storm, provides a solution to deploy Storm cl
 
 Deploying Hadoop/HBase and Storm on separated clusters is not recommended. For that reason, this document will not cover the topic. Complete guide to storm-deploy can be found at https://github.com/nathanmarz/storm-deploy/wiki.
 
-===Install Storm using our customise storm-deploy===
+===Install Storm using our custom storm-deploy===
 
-Using default storm-deploy project does not take much efforts and quite simple. However, it cannot deploy Storm on existing cluster. After playing some various solutions around, we decided to write our own customise scripts to have Storm running on top of Hadoop/HBase cluster. This solution is much more efficient and cost-saving than the previous one.
+Using default storm-deploy project does not take much efforts and quite simple. However, it cannot deploy Storm on existing cluster. After playing some various solutions around, we decided to write our own custom scripts to have Storm running on top of Hadoop/HBase cluster. This solution is much more efficient and cost-saving than the previous one.
 
 In our custormise Storm deployment, the master node of Storm is also the master node of Hadoop/HBase cluster. Further modifications need to be made to get Storm installed in other architectures.
 
-You can download our customise Storm-deploy here
+You can download our custom Storm-deploy here
 
 Uncompress the archive:
 {{{
 tar xvfz storm-deploy.2.0.tar.gz
 }}}
 
-Customise Storm deployment consists of 3 scripts:
+Custom Storm deployment consists of 3 scripts:
 ￼
  * *make-node-list.sh*: copy this script to your Whirr directory. This script will:
       # Generate a ￼ storm-nodes.list fromlaunch-cluster.log
