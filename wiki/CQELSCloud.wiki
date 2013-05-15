@@ -147,21 +147,44 @@ Nathan Marz, the author of Twitter Storm, provides a solution to deploy Storm cl
 
 Deploying Hadoop/HBase and Storm on separated clusters is not recommended. For that reason, this document will not cover the topic. Complete guide to storm-deploy can be found at https://github.com/nathanmarz/storm-deploy/wiki.
 
-===Install Storm using our customise storm-deploy
+===Install Storm using our customise storm-deploy===
 
 Using default storm-deploy project does not take much efforts and quite simple. However, it cannot deploy Storm on existing cluster. After playing some various solutions around, we decided to write our own customise scripts to have Storm running on top of Hadoop/HBase cluster. This solution is much more efficient and cost-saving than the previous one.
 
+In our custormise Storm deployment, the master node of Storm is also the master node of Hadoop/HBase cluster. Further modifications need to be made to get Storm installed in other architectures.
 
-
-You can download the Storm-deploy here
+You can download our customise Storm-deploy here
 
 Uncompress the archive:
 {{{
 tar xvfz storm-deploy.2.0.tar.gz
 }}}
 
+Customise Storm deployment consists of 3 scripts:
+￼
+ * *make-node-list.sh*: copy this script to your Whirr directory. This script will:
+      # Generate a ￼ storm-nodes.list fromlaunch-cluster.log
+      # Each line in the storm-nodes.list￼ is an entry for each node of the cluster:
+     {{{
+        <role>:<hostname>:<public-ip>:<private-ip> 
+        <role>:<hostname>:<public-ip>:<private-ip>
+     }}}
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+ * *Storm-install.sh*: place this script in your $HOME directory. This script will install Storm on each node and start Storm services corresponding to its roles.
+ * *Storm-deploy.sh*: place this script in your $HOME directory. What it does are:
+     # Copy storm-nodes.list￼ to each nodes. This helps configuring storm.yaml for Storm cluster.
+     # Traverse each node in the list and remotely execute the storm- install.sh on each target machine to install Storm in parallel.
+
+To deploy Storm cluster from local machine:
+ * Generate storm-nodes.list ￼ from launch-cluster.log￼ file:
+    {{{
+        $ cd /path/to/whirr/directory/
+        $ ./make-node-list.sh
+    }}}
+ * Run storm-deploy.sh on local machine:
+    {{{
+        $ cd ~/
+        $ ./storm-deploy.sh
+    }}}
+
+After a few minutes, you can check whether your storm cluster installation is success or not by visiting this URL: http://master-public-ip-or-hostname:8080/ 
