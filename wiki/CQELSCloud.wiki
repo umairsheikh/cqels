@@ -20,7 +20,7 @@ We implemented our elastic execution model and the parallel algorithms using Zoo
  * Whirr-0.8.0-cdh4.2.0
  * Storm 0.8.2
 
-===Step 1: Get the Cluster Running===
+===Step 1: Install EC2 command-line tools===
 
 You will need to sign up, or create an Amazon Web Service (AWS) account at http://aws.amazon.com/.
 
@@ -38,10 +38,11 @@ http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/adding-security-group-
 
 After all these steps are done, review the following checklist to make sure everything is ready:
 
-X.509 certificates: Check if the X.509 certificates are uploaded. You can check this at your account's Security Credentials page.
-EC2 key pairs: Check if EC2 key pairs are uploaded. You can check this at AWS Management Console | Amazon EC2 | NETWORK & SECURITY | Key Pairs.
-Access: Check if the access has been authorized. This can be checked at AWS Management Console | Amazon EC2 | NETWORK & SECURITY | Security Groups | Inbound.
-Environment variable settings: Check if the environment variable settings are done. As an example, the following snippet shows my settings; make sure you are using the right EC2_URL for your region:
+ * *X.509 certificates:* Check if the X.509 certificates are uploaded. You can check this at your account's Security Credentials page.
+ * *EC2 key pairs:* Check if EC2 key pairs are uploaded. You can check this at *AWS Management Console | Amazon EC2 | NETWORK & SECURITY | Key Pairs*.
+ * *Access:* Check if the access has been authorized. This can be checked at *AWS Management Console | Amazon EC2 | NETWORK & SECURITY | Security Groups | Inbound*.
+ * *Environment variable settings:* Check if the environment variable settings are done. As an example, the following snippet shows my settings; make sure you are using the right EC2_URL for your region:
+
 {{{
 $ cat ~/.bashrc
 export EC2_HOME=~/opt/ec2-api-tools-1.4.4.2
@@ -60,6 +61,105 @@ Verify the settings by typing the following command:
 $ ec2-describe-instances
 }}}
 If everything has been set up properly, the command will show your instances similarly to how you had configured them in the previous command.
+
+===Step 2: Install Apache Whirr===
+
+====Apache Whirr™====
+
+Apache Whirr is a set of libraries for running cloud services.
+
+*Whirr provides:*
+
+A cloud-neutral way to run services. You don't have to worry about the idiosyncrasies of each provider.
+A common service API. The details of provisioning are particular to the service.
+Smart defaults for services. You can get a properly configured system running quickly, while still being able to override settings as needed.
+You can also use Whirr as a command line tool for deploying clusters.
+
+To install Whirr, please make sure that you have Java JDK 6 or 7 installed on your machine.
+
+====Installation====
+You can download whirr here
+
+Uncompress the archive:
+{{{
+tar xvfz whirr-0.8.0-cdh4.2.0.tar.gz
+}}}
+
+Now we are going to write a config file to tell whirr how to deploy hadoop on amazon ec2. Create the file ~/cqelscloud-ec2.properties with the following content:
+{{{
+whirr.cluster-name=cqelscloud
+whirr.cluster-user=storm
+whirr.instance-templates=1 zookeeper+hadoop-namenode+yarn-resourcemanager+mapreduce-historyserver+hbase-master,2 hadoop-datanode+yarn-nodemanager+hbase-regionserver
+whirr.provider=aws-ec2
+whirr.identity=<AMAZON ACCESS KEY ID>
+whirr.credential=<AMAZON SECRET ACCESS KEY>
+whirr.private-key-file=${sys:user.home}/.ssh/id_rsa
+whirr.public-key-file=${sys:user.home}/.ssh/id_rsa.pub
+whirr.env.MAPREDUCE_VERSION=2
+whirr.env.repo=cdh4
+# whirr.java.install-function=install_oab_java
+whirr.java.install-function=install_oracle_jdk6
+whirr.zookeeper.install-function=install_cdh_zookeeper
+whirr.zookeeper.configure-function=configure_cdh_zookeeper
+whirr.hadoop.install-function=install_cdh_hadoop
+whirr.hadoop.configure-function=configure_cdh_hadoop
+whirr.hbase.install-function=install_cdh_hbase
+whirr.hbase.configure-function=configure_cdh_hbase
+whirr.mr_jobhistory.start-function=start_cdh_mr_jobhistory
+whirr.yarn.configure-function=configure_cdh_yarn
+whirr.yarn.start-function=start_cdh_yarn
+whirr.hardware-id=m1.medium
+whirr.image-id=us-east-1/ami-2efa9d47
+whirr.location-id=us-east-1
+}}}
+
+We also need a RSA ssh key pair with no password, to generate it type:
+{{{ 
+ssh-keygen -t rsa -P ''
+}}}
+And use the default values.
+
+Now we can deploy hadoop on amazon ec2  using whirr
+{{{
+cd whirr-0.8.1/
+bin/whirr launch-cluster --config ~/cqelscloud-ec2.properties
+}}}
+It will start 2 micro instances on amazon EC2. Then it will install java, hadoop and hbase. On one instance, we’ll have the hmaster, hadoop namenode and the hadoop jobtracker and on the other instance we’ll have the tasktracker and regionserver.
+When whirr is done deploying hadoop and hbase, you should get a message like:
+{{{
+You can log into instances using the following ssh commands:
+'ssh -i /Users/hoan/.ssh/id_rsa -o "UserKnownHostsFile /dev/null" -o StrictHostKeyChecking=no storm@54.242.102.235'
+'ssh -i /Users/hoan/.ssh/id_rsa -o "UserKnownHostsFile /dev/null" -o StrictHostKeyChecking=no storm@50.16.173.250'
+}}}
+
+If everything went well, you should be able to see the two instances running on amazon ec2 console: https://console.aws.amazon.com/ec2/home?region=us-east-1#s=Instances
+
+You should also be able to access to the hbase master web interface using your browser:
+
+*http://<hmaster ip>:60010*
+
+=How-to: Set Up Storm on top of HBase EC2=
+Storm is a distributed realtime computation system. Similar to how Hadoop provides a set of general primitives for doing batch processing, Storm provides a set of general primitives for doing realtime computation. Storm is simple, can be used with any programming language, is used by many companies, and is a lot of fun to use!
+
+Nathan Marz, the author of Twitter Storm, provides a solution to deploy Storm cluster on Amazon EC2 platform. The project named storm-deploy. However, storm-deploy can only deploy Storm on a newly created cluster. For that reason, in order to have Hadoop/HBase and Storm to work together, you must deploy these clusters separately and then, connect its to each other.
+
+===Install Storm using Storm-deploy project===
+
+Deploying Hadoop/HBase and Storm on separated clusters is not recommended. For that reason, this document will not cover the topic. Complete guide to storm-deploy can be found at https://github.com/nathanmarz/storm-deploy/wiki.
+
+===Install Storm using our customise storm-deploy
+
+Using default storm-deploy project does not take much efforts and quite simple. However, it cannot deploy Storm on existing cluster. After playing some various solutions around, we decided to write our own customise scripts to have Storm running on top of Hadoop/HBase cluster. This solution is much more efficient and cost-saving than the previous one.
+
+
+
+You can download the Storm-deploy here
+
+Uncompress the archive:
+{{{
+tar xvfz storm-deploy.2.0.tar.gz
+}}}
+
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
