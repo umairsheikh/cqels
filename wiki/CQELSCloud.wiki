@@ -5,7 +5,16 @@ CQELS Cloud Performance Tests
 Linked Stream Data extends the Linked Data paradigm to dynamic data sources. It enables the integration and joint processing of heterogeneous stream data sources and data from the Linked Data Cloud. Several Linked Stream Data processing engines exist but their scalability still needs to be in improved in terms of (static and dynamic) data sizes, number of concurrent queries, stream update frequencies, etc. Moreover, none of them yet supports parallel processing in the Cloud, i.e., elastic load profiles in a hosted environment. To remedy these limitations, we present an approach for elastically parallelizing the continuous ex- ecution of queries over Linked Stream Data. For this, we have developed novel and highly efficient and scalable parallel algorithms for continuous query operators. Our approach and algorithms are implemented in our CQELS Cloud system and we present extensive evaluations of its supe- rior performance on Amazon EC2 demonstrating its high scalability and excellent elasticity.
 
 In this tutorial we will describe the required steps for setting up a distributed, multinode CQELS Cloud cluster backed by the Storm, HBase and Hadoop Distributed File System, running on Ubuntu Linux.
-= Details =
+
+=Tutorial approach and structure =
+
+Our execution model is run in a distributed architecture as shown in Figure below. The logical query network is mapped to a processing network distributed among processing nodes, called Operator Containers (OCs). The Global Sched- uler of the Execution Coordinator uses the Coordination Service to distribute the continuous processing tasks to OCs to trigger the corresponding executions concurrently. Similar to Eddies [2,18], the continuous processing tasks are in- put stream elements associated with signatures that indicate which by which physical operators the stream elements need to be processed to satisfy their processing pipeline (mandated by the original queries). Each OC hosts a set of physical query operators that process input streams and forward the output to the consuming operators in the network. The Local Scheduler of an OC is responsible for scheduling the execution of processing tasks assigned by the Global Scheduler to make the best use of computing resources allocated for that OC.
+
+
+
+We implemented our elastic execution model and the parallel algorithms using ZooKeeper, Storm and HBase. The architecture of CQELS Cloud is is shown in Figure 1: The Execution Coordinator coordinates the cluster of OCs using coordination services provided by Storm and HBase which share the same Zookeeper cluster. The Global Scheduler uses Nimbus3, an open source EC2/S3- compatible Infrastructure-as-a-Service implementation, to deploy the operators’ code to OCs and monitor for failures. Each OC node runs a Storm supervisor which listens for continuous processing tasks assigned to its machine via Nimbus. The processing tasks that need to process the persistent data use the HBase Client component to access data stored in HBase. The machines running an OC also hosts the HDFS DataNodes of the HBase cluster. The DataNodes are accessed via the OC’s HRegionServer component of HBase.
+
+[http://cqels.googlecode.com/files/CQELSCloud.png]
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
