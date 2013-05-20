@@ -263,8 +263,8 @@ storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query
    # args0: topology name - Query2
    # args1: The amount of patterns will be used to check if triple is matched – 100000
    # args2: How many triple data will be packed to 1 batch after match operation -  1000 
-   # args3: The number of executors for join bolt in this query - 32
-   # args4: The number of executors for decode bolt in this query - 32
+   # args3: The number of executors for join bolt - 32
+   # args4: The number of executors for decode bolt - 32
    # args5: The number of output buffers for multiple M join - 1000
 
  * *Query 3*
