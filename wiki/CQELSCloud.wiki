@@ -190,12 +190,14 @@ To deploy Storm cluster from local machine:
 
 After a few minutes, you can check whether your storm cluster installation is success or not by visiting this URL: http://master-public-ip-or-hostname:8080/ 
 
-==HOW TO RUN== 
+==HOW TO TEST== 
+Note: The value after each of argument explanation is the sample value.
+
 ===Test Operators separately===
+
  * *Operator MATCH*
 
 storm jar Join5w-1.0.0-jar-with-dependencies.jar  main.Match args0  args1  args2 args3 args4  args5
-where( the value in the end is the sample)
 
    # args0: topology name - matchOp
    # args1: The amount of patterns will be used to check if triple is matched - 100000
@@ -208,7 +210,6 @@ where( the value in the end is the sample)
 
 storm jar Join5w-1.0.0-jar-with-dependencies.jar main.Join0A args0 args1 args2 args3 args4 args5 args6
 
-where( the number in the end is the sample value)
     # args0 :  topology name – JoinOAOp
     # args1: The amount of spout executors – 32
     # args2: The amount of batch data will be sent to match bolt. Batch is defined as a number of triple data packed together - 100000
@@ -217,11 +218,10 @@ where( the number in the end is the sample value)
     # args5: The size of window buffer – 100000
     # args6: The amount of workers for this operator - 32
 
- * *Operator JOIN and AGGREGATION*
+ * *Operator JOIN and AGGREGATION after*
 
 storm jar Join5w-1.0.0-jar-with-dependencies.jar  main.Join1A args0 args1 args2 args3 args4 args5 args6 args7 args8
 
-where( the number in the end is the sample value)
    # args0 :  topology name – Join1AOp
    # args1: The amount of spout executors – 32
    # args2: The amount of batch data will be sent to match bolt. Batch is defined as a number of triple data packed together - 100000
@@ -251,8 +251,6 @@ where( the number in the end is the sample value)
 
 storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query1 args0  args1  args2 args3
 
-(the value in the end is the sample value)
-
    # args0: topology name - Query1
    # args1: The amount of patterns will be used to check if triple is matched – 100000
    # args2: How many triple data will be packed to 1 batch after match operation -  1000 
@@ -261,8 +259,6 @@ storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query
  * *Query 2*
 
 storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query2 args0  args1  args2 args3 args4  args5
-
-(the value in the end is the sample value)
 
    # args0: topology name - Query2
    # args1: The amount of patterns will be used to check if triple is matched – 100000
@@ -275,8 +271,6 @@ storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query
 
 storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query3 args0  args1  args2 args3 args4 
 
-(the value in the end is the sample value)
-
    # args0: topology name - Query3
    # args1: The amount of patterns will be used to check if triple is matched – 100000
    # args2: How many triple data will be packed to 1 batch -  1000 
@@ -286,8 +280,6 @@ storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query
  * *Query 4*
  	
 storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query4 args0  args1  args2 args3 args4 args5 args6
-
-(the value in the end is the sample value)
 
    # args0: topology name - Query4
    # args1: The amount of patterns will be used to check if triple is matched – 100000
