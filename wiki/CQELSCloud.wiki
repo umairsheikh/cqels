@@ -17,8 +17,9 @@ We implemented our elastic execution model and the parallel algorithms using Zoo
 ==Prerequisites==
 
  * Amazon EC2 account
- * Whirr-0.8.0-cdh4.2.0
+ * [https://cqels.googlecode.com/files/whirr-0.8.0-cdh4.2.0.zip Whirr-0.8.0-cdh4.2.0]
  * Storm 0.8.2
+ * [https://cqels.googlecode.com/files/distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar CqelsCloud jar]
 
 ===Step 1: Install EC2 command-line tools===
 
@@ -70,7 +71,7 @@ Apache Whirr is a set of libraries for running cloud services.
 
 *Whirr provides:*
 
-A cloud-neutral way to run services. You don't have to worry about the idiosyncrasies of each provider.
+A cloud-neutral way to run services..
 A common service API. The details of provisioning are particular to the service.
 Smart defaults for services. You can get a properly configured system running quickly, while still being able to override settings as needed.
 You can also use Whirr as a command line tool for deploying clusters.
@@ -188,3 +189,155 @@ To deploy Storm cluster from local machine:
     }}}
 
 After a few minutes, you can check whether your storm cluster installation is success or not by visiting this URL: http://master-public-ip-or-hostname:8080/ 
+
+==HOW TO RUN== 
+===Test Operators separately===
+ * *Operator MATCH*
+
+storm jar Join5w-1.0.0-jar-with-dependencies.jar  main.Match args0  args1  args2 args3 args4  args5
+where( the value in the end is the sample)
+
+   #args0: topology name - matchOp
+   #args1: The amount of patterns will be used to check if triple is matched - 100000
+   #args2: The amount of batch data will be sent to match bolt. Batch is defined as a number of triple data packed together - 100000
+   #args3: The number of executors for the match bolt - 64
+   #args4: How many triple data will be packed to 1 batch -  1000
+   #args5: The number of worker will be used for this operator - 32
+
+**Operator JOIN*
+
+storm jar Join5w-1.0.0-jar-with-dependencies.jar main.Join0A args0 args1 args2 args3 args4 args5 args6
+
+where( the number in the end is the sample value)
+    #args0 :  topology name – JoinOAOp
+    #args1: The amount of spout executors – 32
+    #args2: The amount of batch data will be sent to match bolt. Batch is defined as a number of triple data packed together - 100000
+    #args3: How many triple data will be packed to 1 batch -  1000
+    #args4: The number of executors for the join bolt – 64
+    #args5: The size of window buffer – 100000
+    #args6: The amount of workers for this operator - 32
+
+ **Operator JOIN and AGGREGATION*
+
+storm jar Join5w-1.0.0-jar-with-dependencies.jar  main.Join1A args0 args1 args2 args3 args4 args5 args6 args7 args8
+
+where( the number in the end is the sample value)
+   #args0 :  topology name – Join1AOp
+   #args1: The amount of spout executors – 32
+   #args2: The amount of batch data will be sent to match bolt. Batch is defined as a number of triple data packed together - 100000
+   #args3: How many triple data will be packed to 1 batch -  1000
+   #args4: The number of executors for the join bolt – 64
+   #args5: The size of window buffer – 100000
+   #args6: The amount of workers for this operator – 32
+   #args7: The amount of executors for agg threads – 32 
+   #args8: The type of aggregation– 3 (for Min aggregation)
+
+**Operator AGGREGATION*
+
+ storm jar Join5w-1.0.0-jar-with-dependencies.jar main.Agg  args0  args1  args2  args3 args4  args5  args6  args7
+
+where( the number in the end is the sample value)
+   #args0 :  topology name – AggOp
+   #args1: The amount of spout executors – 32
+   #args2: How many triple data will be packed into 1 batch – 1000.
+   #args3: The amount of batch data will be sent to match bolt. Batch is defined as a number of triple data packed together
+   #args4: The number of executors for the aggregation bolt – 32
+   #args5: The size of window buffer – 100000
+   #args6: The type of aggregation– 3 (for Min aggregation)
+   #args7: The amount of workers for this operator – 32
+ 
+====Test 4 queries====
+**Query 1*
+	{{{	
+		PREFIX sib:  <http://www.ins.cwi.nl/sib/vocabulary/>
+		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+		PREFIX sioc: <http://rdfs.org/sioc/ns#>
+		select ?p ?o
+		where{ 
+		  STREAM <http://deri.org/poststream> [RANGE 1s]
+		  {<http://www.ins.cwi.nl/sib/user/u984> ?p ?o.}
+		}
+       }}}
+
+storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query1 args0  args1  args2 args3
+
+where( the value in the end is the sample)
+
+   #args0: topology name - Query1
+   #args1: The amount of patterns will be used to check if triple is matched – 100000
+   #args2: How many triple data will be packed to 1 batch after match operation -  1000 
+   #args3: How many executors for decode task - 32
+
+**Query 2*
+     {{{
+		
+		PREFIX sib:  <http://www.ins.cwi.nl/sib/vocabulary/>
+		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+		select ?friend1 ?friend2 ?photo
+		where{ 
+		  STREAM <http://deri.org/likedphotostream> [RANGE 100ms]
+		  {?friend2 sib:like ?photo. }
+		  STREAM <http://deri.org/photostream> [RANGE 1m ]
+		  {?photo sib:usertag ?friend1.}
+		  ?friend1 foaf:knows ?friend2.
+		}
+    }}}
+
+storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query5 args0  args1  args2 args3 args4  args5
+
+where( the value in the end is the sample)
+
+   #args0: topology name - Query2
+   #args1: The amount of patterns will be used to check if triple is matched – 100000
+   #args2: How many triple data will be packed to 1 batch after match operation -  1000 
+   #args3: The number of executors for join bolt in this query - 32
+   #args4: The number of executors for decode bolt in this query - 32
+   #args5: The number of output buffers for multiple M join - 1000
+
+**Query 3*
+	{{{
+		PREFIX foaf: <http://xmlns.com/foaf/0.1/>		
+		PREFIX sib: <http://www.ins.cwi.nl/sib/vocabulary/>
+		PREFIX sioc: <http://rdfs.org/sioc/ns#>
+		select ?user ?post ?friend
+		where{ 
+		STREAM <http://deri.org/poststream> [RANGE 15s]
+		{?post sib:hashtag ?tag. ?user sioc:creator_of ?post.} 
+		STREAM <http://deri.org/likedpoststream> [RANGE 100ms]
+		{?friend sib:like ?post.}
+                }
+      }}}
+
+storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query6 args0  args1  args2 args3 args4 
+
+where( the value in the end is the sample)
+   #args0: topology name - Query3
+   #args1: The amount of patterns will be used to check if triple is matched – 100000
+   #args2: How many triple data will be packed to 1 batch -  1000 
+   #args3: How many executors for decode task – 32
+   #args4: The number of output buffers for multiple M join - 1000
+
+**Query 4*
+          {{{		
+		PREFIX sib:   <http://www.ins.cwi.nl/sib/vocabulary/>
+		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+		select ?user1 count(?user2)
+		where{ 
+		STREAM <http://deri.org/likedphotostream> [RANGE 100ms]
+		{?user2 sib:like ?photo. }
+		STREAM <http://deri.org/photostream> [RANGE 1m ]
+		{?photo sib:usertag ?user1.}
+		}
+		group by  ?user1
+          }}}
+	
+storm jar distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar  main.Query7 args0  args1  args2 args3 args4 args5 args6
+
+where( the value in the end is the sample)
+   #args0: topology name - Query4
+   #args1: The amount of patterns will be used to check if triple is matched – 100000
+   #args2: How many triple data will be packed to 1 batch after match operator -  1000 
+   #args3: How many executors for join task – 32
+   #args4: How many executors for aggregation task – 32
+   #args5: How many executors for decode task – 32
+   #args6: The number of output buffers for multiple M join - 1000
