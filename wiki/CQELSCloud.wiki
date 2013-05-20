@@ -204,7 +204,7 @@ where( the value in the end is the sample)
    #args4: How many triple data will be packed to 1 batch -  1000
    #args5: The number of worker will be used for this operator - 32
 
-**Operator JOIN*
+* *Operator JOIN*
 
 storm jar Join5w-1.0.0-jar-with-dependencies.jar main.Join0A args0 args1 args2 args3 args4 args5 args6
 
@@ -217,7 +217,7 @@ where( the number in the end is the sample value)
     #args5: The size of window buffer – 100000
     #args6: The amount of workers for this operator - 32
 
- **Operator JOIN and AGGREGATION*
+ * *Operator JOIN and AGGREGATION*
 
 storm jar Join5w-1.0.0-jar-with-dependencies.jar  main.Join1A args0 args1 args2 args3 args4 args5 args6 args7 args8
 
@@ -232,7 +232,7 @@ where( the number in the end is the sample value)
    #args7: The amount of executors for agg threads – 32 
    #args8: The type of aggregation– 3 (for Min aggregation)
 
-**Operator AGGREGATION*
+* *Operator AGGREGATION*
 
  storm jar Join5w-1.0.0-jar-with-dependencies.jar main.Agg  args0  args1  args2  args3 args4  args5  args6  args7
 
@@ -247,7 +247,7 @@ where( the number in the end is the sample value)
    #args7: The amount of workers for this operator – 32
  
 ====Test 4 queries====
-**Query 1*
+* *Query 1*
 	{{{	
 		PREFIX sib:  <http://www.ins.cwi.nl/sib/vocabulary/>
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -268,7 +268,7 @@ where( the value in the end is the sample)
    #args2: How many triple data will be packed to 1 batch after match operation -  1000 
    #args3: How many executors for decode task - 32
 
-**Query 2*
+* *Query 2*
      {{{
 		
 		PREFIX sib:  <http://www.ins.cwi.nl/sib/vocabulary/>
@@ -294,7 +294,7 @@ where( the value in the end is the sample)
    #args4: The number of executors for decode bolt in this query - 32
    #args5: The number of output buffers for multiple M join - 1000
 
-**Query 3*
+* *Query 3*
 	{{{
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>		
 		PREFIX sib: <http://www.ins.cwi.nl/sib/vocabulary/>
@@ -317,7 +317,7 @@ where( the value in the end is the sample)
    #args3: How many executors for decode task – 32
    #args4: The number of output buffers for multiple M join - 1000
 
-**Query 4*
+* *Query 4*
           {{{		
 		PREFIX sib:   <http://www.ins.cwi.nl/sib/vocabulary/>
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
