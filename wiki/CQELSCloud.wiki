@@ -71,10 +71,10 @@ Apache Whirr is a set of libraries for running cloud services.
 
 *Whirr provides:*
 
-A cloud-neutral way to run services..
-A common service API. The details of provisioning are particular to the service.
-Smart defaults for services. You can get a properly configured system running quickly, while still being able to override settings as needed.
-You can also use Whirr as a command line tool for deploying clusters.
+ * A cloud-neutral way to run services..
+ * A common service API. The details of provisioning are particular to the service.
+ * Smart defaults for services. You can get a properly configured system running quickly, while still being able to override settings as needed.
+ * You can also use Whirr as a command line tool for deploying clusters.
 
 To install Whirr, please make sure that you have Java JDK 6 or 7 installed on your machine.
 
