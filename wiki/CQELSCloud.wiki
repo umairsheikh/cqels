@@ -20,6 +20,7 @@ We implemented our elastic execution model and the parallel algorithms using Zoo
  * [https://cqels.googlecode.com/files/whirr-0.8.0-cdh4.2.0.zip Whirr-0.8.0-cdh4.2.0]
  * Storm 0.8.2
  * [https://cqels.googlecode.com/files/distributed_cqels-0.0.1-SNAPSHOT-jar-with-dependencies.jar CqelsCloud jar]
+ * [https://cqels.googlecode.com/files/split.zip Test Data]
 
 ===Step 1: Install EC2 command-line tools===
 
