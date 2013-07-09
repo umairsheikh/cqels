@@ -99,6 +99,7 @@ Register the query to CQELS engine
 
 String queryString =" ... ";
 
+//With the select-type query
 ContinuousSelect selQuery=context.registerSelect(queryString);
 selQuery.register(new ContinuousListener()
 {
@@ -110,7 +111,17 @@ selQuery.register(new ContinuousListener()
          System.out.println(result);
       } 
 });
-
+//With the construct-type query
+ContinuousConstruct consQuery=context.registerConstruct(queryString);
+consQuery.register(new ConstructListener(context, "http://deri.org/floorplan/") {
+			
+	@Override
+	public void update(List<Triple> graph) {
+		for(Triple t : graph) {
+	              System.out.println(t.getSubject() + " " + t.getPredicate() + " " + t.getObject());
+				}
+			}
+		};)
 }}}
 
 Start streaming thread
