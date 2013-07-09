@@ -113,7 +113,7 @@ selQuery.register(new ContinuousListener()
 });
 //With the construct-type query
 ContinuousConstruct consQuery=context.registerConstruct(queryString);
-consQuery.register(new ConstructListener(context, "http://example.com"//put your URL receiver here) {
+consQuery.register(new ConstructListener(context, "http://example.com"/*put your URL receiver here*/) {
 			
 	@Override
 	public void update(List<Triple> graph) {
