@@ -113,15 +113,14 @@ selQuery.register(new ContinuousListener()
 });
 //With the construct-type query
 ContinuousConstruct consQuery=context.registerConstruct(queryString);
-consQuery.register(new ConstructListener(context, "http://deri.org/floorplan/") {
+consQuery.register(new ConstructListener(context, "http://example.com"//put your URL receiver here) {
 			
 	@Override
 	public void update(List<Triple> graph) {
 		for(Triple t : graph) {
 	              System.out.println(t.getSubject() + " " + t.getPredicate() + " " + t.getObject());
-				}
-			}
-		};)
+		}
+	}};)
 }}}
 
 Start streaming thread
