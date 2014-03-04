@@ -81,7 +81,7 @@ The static datasets will be loaded directly from the URIs of the named graphs, t
 
 //load the default dataset from the a file
 
-context.loadDefaultDataset("{FILE TO LOAD DEFAULT DATASET}");
+context.loadDefaultDataset("{FILE PATH TO LOAD DEFAULT DATASET}");
 
 //load datasets for named graph
 
