@@ -91,13 +91,13 @@ context.loadDefaultDataset("{DIRECTORY TO LOAD DEFAULT DATASET}");
 Initialize the RDF stream 
 
 {{{
-RDFStream= new TextStream(context, "http://deri.org/streams/rfid", HOME+"/rfid_50000.stream");
+RDFStream stream = new TextStream(context, "http://deri.org/streams/rfid", HOME+"/rfid_50000.stream");
 }}}
 
 Register the query to CQELS engine
 {{{
 
-String queryString =" ... ";
+String queryString =" ... ";//put your query here
 
 //With the select-type query
 ContinuousSelect selQuery=context.registerSelect(queryString);
